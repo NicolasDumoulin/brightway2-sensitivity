@@ -10,3 +10,9 @@ A docker image [is available](https://github.com/cmutel/bw2-docker) and allow to
 docker pull cmutel/brightway2
 docker run -it --rm -p 8888:8888 --volume=$(pwd):/home/jovyan/notebooks cmutel/brightway2
 ```
+
+You can also use the enhanced version that I propose, that add the [Jupyter notebook extensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions) with a lot of features for the notebook. For that:
+```
+docker build -t bw2 .
+docker run -it --rm -p 8888:8888 --volume=$(pwd):/home/jovyan/notebooks bw2
+```
