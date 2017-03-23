@@ -8,6 +8,23 @@ from scipy.sparse import csr_matrix
 
 
 def lsa(lca, threshold=0.1):
+    '''
+    Computes relative sensitivity coefficients (RSC) according to (Heijungs and Kleijn, 2001) and (Sakai and Yokoyama, 2002), used in (Wei et al., 2015) for performing a local sensitivity analysis.
+    Returns an array of two datasets of RSC, respectively for the technosphere and the biosphere matrices, where each record contains:
+     - impact indix
+     - row index in the matrix
+     - column index in the matrix
+     - value of RSC
+     - label of the row (respectively activity and biosphere)
+     - label of the column (respectively product and activity)
+     
+    References:
+     Heijungs, R.; Kleijn, R. Numerical approaches towards life cycle interpretation five examples. Int. J. Life Cycle Assess. 2001, 6, 141−148.
+     Sakai, S.; Yokoyama, K. Formulation of sensitivity analysis in life
+cycle assessment using a perturbation method. Clean Technol. Environ.
+Policy 2002, 4, 72−78
+     W. Wei, P. Larrey Lassalle, T. Faure, N. Dumoulin, P. Roux, J.D. Mathias. How to conduct a proper sensitivity analysis in life cycle assessment: Taking into account correlations within LCI data and interactions within the LCA calculation model Environmental Science & Technology 49 (1), 2015 http://pubs.acs.org/doi/abs/10.1021/es502128k
+    '''
     lca.lci()
     lca.lcia()
     m_a = lca.technosphere_matrix
