@@ -7,3 +7,7 @@ USER $NB_USER
 RUN pip install jupyter_contrib_nbextensions
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
+
+RUN pip install plotly
+
+RUN pip install SALib
