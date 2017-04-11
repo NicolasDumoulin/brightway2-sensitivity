@@ -17,6 +17,8 @@ def lsa(lca, threshold=0.1):
      - value of RSC
      - label of the row (respectively activity and biosphere)
      - label of the column (respectively product and activity)
+    
+    Only RSC above the given threshold will be keeped.
      
     References:
      Heijungs, R.; Kleijn, R. Numerical approaches towards life cycle interpretation five examples. Int. J. Life Cycle Assess. 2001, 6, 141−148.
