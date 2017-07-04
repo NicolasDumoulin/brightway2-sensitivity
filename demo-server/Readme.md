@@ -1,9 +1,7 @@
 ### Usage
 
-To use our module with this demo server, you need to add it to the `python path` and import it:
+To use our module with this demo server, you need to import it:
 ```
-import sys
-sys.path.append("../sensitivity")
 import lsa, gsa
 ```
 
@@ -34,7 +32,7 @@ python -c 'from IPython.lib import passwd; print(passwd("secret"))'
 ```
 docker build -t bw2-uncertainty-demo .
 ```
-* Create a network for isolate the docker container from the network
+  * Create a network for isolate the docker container from the network
 ```
 docker network create -o com.docker.network.bridge.enable_icc=false -o com.docker.network.bridge.enable_ip_masquerade=false isolated
 ```
