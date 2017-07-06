@@ -38,5 +38,5 @@ docker network create -o com.docker.network.bridge.enable_icc=false -o com.docke
 ```
   * Run the container
 ```
-docker run -it -d -p 8888:8888 --network=isolated --volume=$(pwd)/notebooks:/home/jovyan/notebooks --volume=$(pwd)/..:/home/jovyan/sensitivity bw2-uncertainty-demo
+docker run -it -d -p 8888:8888 --network=isolated --volume=/home/bw2/brightway2-sensitivity/demo-server/notebooks:/home/jovyan/notebooks --volume=/home/bw2/brightway2-sensitivity:/home/jovyan/sensitivity bw2-uncertainty-demo
 ```
