@@ -14,21 +14,21 @@ this script to be aware of any module update:
 
 ### Installation notes
 
-  * Create a user, and add it to the group `docker`
+  * On `cfp6078`, create a user, and add it to the group `docker`
 ```
 sudo adduser --disabled-password bw2
 sudo usermod -G docker bw2
 ```
   * Add authorized SSH keys in `~bw2/.ssh/authorized_keysauthorized_keys`.
-  * Deploy the current directory in `~/demo-server`
+  * Deploy the parent directory (`brightway2-sensitivity` root of the git project including python modules) from your computer to `cfp6078`
 ```
-rsync -Cauvb . bw2@cfp6078:demo-server
+rsync -Cauvb ../ bw2@cfp6078:brightway2-sensitivity/
 ```
   * Generate a password and put it in the Dockerfile
 ```
 python -c 'from IPython.lib import passwd; print(passwd("secret"))'
 ```
-  * Build the docker image
+  * From the directory `demo-server` on the server `cfp6078`, build the docker image
 ```
 docker build -t bw2-uncertainty-demo .
 ```
