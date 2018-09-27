@@ -1,0 +1,6 @@
+#https://bitbucket.org/cmutel/brightway2-calc/get/tip.tar.gz
+#https://bitbucket.org/cmutel/brightway2-data/get/tip.tar.gz
+#https://bitbucket.org/cmutel/brightway2/get/tip.tar.gz
+brightway2==2.1.1
+SALib
+pandas
