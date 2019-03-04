@@ -1,6 +1,8 @@
-#https://bitbucket.org/cmutel/brightway2-calc/get/tip.tar.gz
-#https://bitbucket.org/cmutel/brightway2-data/get/tip.tar.gz
-#https://bitbucket.org/cmutel/brightway2/get/tip.tar.gz
-brightway2==2.1.1
-SALib
-pandas
+numpy==1.16.2
+scipy==1.2.1
+matplotlib
+ipython
+jupyter
+brightway2==2.3
+SALib==1.2
+pandas==0.23.4
