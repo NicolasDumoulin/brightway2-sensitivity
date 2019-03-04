@@ -1,3 +1,5 @@
+# -*- coding: utf-8
+
 from brightway2 import Database
 import numpy as np
 try:
@@ -17,9 +19,9 @@ def lsa(lca, threshold=0.1):
      - value of RSC
      - label of the row (respectively activity and biosphere)
      - label of the column (respectively product and activity)
-    
+
     Only RSC above the given threshold will be keeped.
-     
+
     References:
      Heijungs, R.; Kleijn, R. Numerical approaches towards life cycle interpretation five examples. Int. J. Life Cycle Assess. 2001, 6, 141−148.
      Sakai, S.; Yokoyama, K. Formulation of sensitivity analysis in life
@@ -35,10 +37,11 @@ Policy 2002, 4, 72−78
     h = lca.characterized_inventory.sum(axis=1)
     s = lca.supply_array
     m_lambda = spsolve(m_a.transpose(),m_b.transpose()).transpose()
-    m_ql = np.dot(m_q, m_lambda)
+    m_ql = m_q.dot(m_lambda)
     rev_activity, rev_product, rev_bio = lca.reverse_dict()
-    rsca = [-csr_matrix(s).multiply(m_ql[k,:].transpose().multiply(m_a)).multiply(1/hk) for k,hk in enumerate(h)]
-    rscb = [m_q[k,:].transpose().multiply(m_b).multiply(csr_matrix(s)).multiply(1/hk) for k,hk in enumerate(h)]
+    m_as = m_a.multiply(s)
+    rsca = [-m_as.multiply(1/hk).multiply(m_ql[k,:]).tocsr() for k,hk in enumerate(h)]
+    rscb = [m_b.multiply(1/hk).multiply(m_q[k,:].T).multiply(s).tocsr() for k,hk in enumerate(h)]
     rsca_filtered = [[k, x[0],x[1],rscak[x[0],x[1]]] for k,rscak in enumerate(rsca) for x in np.array(rscak.nonzero()).T  if abs(rscak[x[0],x[1]])>threshold]
     rsca_sorted = sorted(rsca_filtered, key=lambda x:abs(x[3]), reverse=True)
     rsca_summary = [x+[
