@@ -35,6 +35,11 @@ docker build -t bw2 .
 docker run -it --rm -p 8888:8888 --volume=$(pwd):/home/jovyan/notebooks bw2
 ```
 
+For launching a console and running the samples:
+```
+docker run -it --rm --volume=$(pwd):/home/jovyan/notebooks bw2 bash
+```
+
 ## TODO
 - Deploy a test instance for easy demonstration and contact Philippe, Pyrenne and Éléonore on 2/06
   - example with sample data
@@ -44,6 +49,6 @@ docker run -it --rm -p 8888:8888 --volume=$(pwd):/home/jovyan/notebooks bw2
 - Some missing uncertainties in section 1.5 (fixme). To see with Chris Mutel
 - Which is the best GSA indicator among mu and mu_star? Are the errors relevant on the charts?
   - test with higher number of simulations
-- Produce a python module as lsa.py with an easy access to GSA
 - Produce a procedure for installation on windows
 - import EcoInvent data
+- Done: Produce a python module as lsa.py with an easy access to GSA
