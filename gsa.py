@@ -52,7 +52,7 @@ class ParallelGSALCA:
         self.B_indices = B_indices
         cpus = cpus or multiprocessing.cpu_count()
         # TODO propose an automatic number_of_trajectories
-        self.samples = ms.sample(self.morris_problem, number_of_trajectories, num_levels=4, grid_jump=2)
+        self.samples = ms.sample(self.morris_problem, number_of_trajectories, num_levels=4)
         if chunk_size:
             self.chunk_size = chunk_size
         else:
@@ -80,7 +80,7 @@ class ParallelGSALCA:
         self.scores = scores
         return scores
     def gsa_analyse(self):
-        return [ma.analyze(self.morris_problem, self.samples, np.array(score), num_levels=4, grid_jump=2) for score in self.scores]
+        return [ma.analyze(self.morris_problem, self.samples, np.array(score), num_levels=4) for score in self.scores]
 
 def gsa(lca, rsca_summary, rscb_summary, number_of_trajectories = 100, progressBar=False):
     # Binding RSC results and uncertainties
