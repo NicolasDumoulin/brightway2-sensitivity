@@ -24,3 +24,10 @@ if __name__ == "__main__":
         Database("forwast").search('Wood products EU27')[0]
         )
     rsca_summary, rscb_summary = lsa(lca)
+    import pandas as pd
+    rsca_sorted_df=pd.DataFrame(rsca_summary, columns = ['Impact','x','y','RSC','Activity(x)','Product(y)'])
+    rscb_sorted_df=pd.DataFrame(rscb_summary, columns = ['Impact','x','y','RSC','Biosphere(x)','Activity(y)'])
+    print(rsca_sorted_df.head())
+    print(rscb_sorted_df.head())
+    rsca_sorted_df.to_csv('exampleLSA_rsca.csv')
+    rscb_sorted_df.to_csv('exampleLSA_rscb.csv')
